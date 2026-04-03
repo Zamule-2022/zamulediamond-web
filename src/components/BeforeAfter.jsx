@@ -44,18 +44,18 @@ export default function BeforeAfter() {
               {/* Stars */}
               <div className="flex gap-0.5">
                 {Array.from({ length: t.stars }).map((_, j) => (
-                  <span key={j} className="text-gold-400 text-base">★</span>
+                  <span key={j} className="text-gold-400 text-base">&#9733;</span>
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-zinc-300 text-sm leading-relaxed flex-1">"{t.texto}"</p>
+              <p className="text-zinc-300 text-sm leading-relaxed flex-1">&ldquo;{t.texto}&rdquo;</p>
 
               {/* Client info */}
               <div className="border-t border-zinc-800 pt-4">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-white font-semibold text-sm">{t.cliente}</span>
-                  <span className="text-zinc-600 text-xs">·</span>
+                  <span className="text-zinc-600 text-xs">&middot;</span>
                   <span className="text-zinc-500 text-xs">{t.zona}</span>
                 </div>
                 <div className="flex gap-2 flex-wrap">
@@ -74,7 +74,7 @@ export default function BeforeAfter() {
             <div className="text-zinc-400 text-sm mt-1">Llantas reparadas</div>
           </div>
           <div className="bg-zinc-900 p-6 text-center">
-            <div className="text-3xl font-black text-gold-400">5★</div>
+            <div className="text-3xl font-black text-gold-400">5&#9733;</div>
             <div className="text-zinc-400 text-sm mt-1">Valoración media</div>
           </div>
           <div className="bg-zinc-900 p-6 text-center">
@@ -89,7 +89,7 @@ export default function BeforeAfter() {
             href="#contacto"
             className="inline-block border border-gold-400/50 text-gold-400 font-semibold px-8 py-3 rounded-lg hover:bg-gold-400/10 transition-colors"
           >
-            Quiero este resultado para mis llantas →
+            Quiero este resultado para mis llantas &#8594;
           </a>
         </div>
 
