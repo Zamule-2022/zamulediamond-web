@@ -31,65 +31,95 @@ export default function Formulario() {
   return (
     <section id="contacto" className="bg-zinc-950 py-24 px-6">
       <div className="max-w-xl mx-auto">
+
+        {/* Header */}
         <div className="text-center mb-10">
           <span className="text-gold-400 text-sm font-semibold tracking-widest uppercase">
             Presupuesto gratis
           </span>
-          <h2 className="text-4xl font-black text-white mt-3">¿Cuándo te venimos?</h2>
-          <p className="text-zinc-400 mt-2">Te contactamos en menos de 2 horas. Sin compromiso.</p>
+          <h2 className="text-4xl font-black text-white mt-3">
+            ¿Cuándo te venimos?
+          </h2>
+          <p className="text-zinc-400 mt-3 max-w-sm mx-auto">
+            Te contactamos en menos de 2 horas. Sin compromiso.
+          </p>
         </div>
 
+        {/* Form or success state */}
         {enviado ? (
-          <div className="bg-green-900/20 border border-green-700/50 rounded-2xl p-10 text-center">
-            <div className="text-5xl mb-4">✅</div>
+          <div className="text-center py-14 bg-zinc-900 rounded-2xl border border-zinc-800">
+            <div className="text-5xl mb-4">✓</div>
             <h3 className="text-white font-bold text-xl mb-2">¡Solicitud recibida!</h3>
-            <p className="text-zinc-400 text-sm">Nos ponemos en contacto contigo en menos de 2 horas para confirmar cita.</p>
-            <button onClick={() => setEnviado(false)} className="mt-6 text-gold-400 text-sm underline-offset-2 underline hover:text-gold-300">
-              Enviar otra solicitud
+            <p className="text-zinc-400 text-sm mb-6">Te llamamos en menos de 2 horas.</p>
+            <button
+              onClick={() => setEnviado(false)}
+              className="text-gold-400 hover:text-gold-300 text-sm font-semibold transition-colors"
+            >
+              Enviar otra solicitud →
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+
+            {/* Name */}
             <div>
               <input
+                {...register('nombre', { required: true })}
                 placeholder="Nombre y apellidos *"
-                className={`w-full bg-zinc-900 border text-white rounded-xl px-4 py-3.5 focus:outline-none transition-colors placeholder:text-zinc-500 ${
-                  errors.nombre ? 'border-red-500 focus:border-red-400' : 'border-zinc-700 focus:border-gold-400'
-                }`}
-                {...register('nombre', { required: 'El nombre es obligatorio' })}
+                className={`w-full bg-zinc-900 border text-white rounded-xl px-4 py-3.5 focus:outline-none transition-colors placeholder:text-zinc-500 ${errors.nombre ? 'border-red-500' : 'border-zinc-700 focus:border-gold-400'}`}
               />
-              {errors.nombre && <p className="text-red-400 text-xs mt-1.5 pl-1">{errors.nombre.message}</p>}
+              {errors.nombre && <p className="text-red-400 text-xs mt-1 ml-1">Campo obligatorio</p>}
             </div>
 
+            {/* Phone */}
             <div>
               <input
                 type="tel"
+                {...register('telefono', { required: true })}
                 placeholder="Teléfono / WhatsApp *"
-                className={`w-full bg-zinc-900 border text-white rounded-xl px-4 py-3.5 focus:outline-none transition-colors placeholder:text-zinc-500 ${
-                  errors.telefono ? 'border-red-500 focus:border-red-400' : 'border-zinc-700 focus:border-gold-400'
-                }`}
-                {...register('telefono', {
-                  required: 'El teléfono es obligatorio',
-                  pattern: { value: /^[0-9+\s\-()]{9,15}$/, message: 'Introduce un teléfono válido' },
-                })}
+                className={`w-full bg-zinc-900 border text-white rounded-xl px-4 py-3.5 focus:outline-none transition-colors placeholder:text-zinc-500 ${errors.telefono ? 'border-red-500' : 'border-zinc-700 focus:border-gold-400'}`}
               />
-              {errors.telefono && <p className="text-red-400 text-xs mt-1.5 pl-1">{errors.telefono.message}</p>}
+              {errors.telefono && <p className="text-red-400 text-xs mt-1 ml-1">Campo obligatorio</p>}
             </div>
 
+            {/* Location + Vehicle row */}
             <div className="grid grid-cols-2 gap-4">
-              <input placeholder="Municipio" className="w-full bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-gold-400 transition-colors placeholder:text-zinc-500" {...register('municipio')} />
-              <input placeholder="Vehículo (ej: BMW X5)" className="w-full bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-gold-400 transition-colors placeholder:text-zinc-500" {...register('vehiculo')} />
+              <input
+                {...register('municipio')}
+                placeholder="Municipio"
+                className="w-full bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-gold-400 transition-colors placeholder:text-zinc-500"
+              />
+              <input
+                {...register('vehiculo')}
+                placeholder="Vehículo (ej: BMW X5)"
+                className="w-full bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-gold-400 transition-colors placeholder:text-zinc-500"
+              />
             </div>
 
-            <textarea rows={3} placeholder="Describe el daño (opcional)" className="w-full bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-gold-400 transition-colors resize-none placeholder:text-zinc-500" {...register('descripcion')} />
+            {/* Description */}
+            <textarea
+              {...register('descripcion')}
+              placeholder="Describe el daño (opcional)"
+              rows={3}
+              className="w-full bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-gold-400 transition-colors placeholder:text-zinc-500 resize-none"
+            />
 
-            <button type="submit" disabled={enviando} className="w-full bg-gold-400 text-black font-bold py-4 rounded-xl text-lg hover:bg-gold-500 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-gold-400/20">
-              {enviando ? 'Enviando...' : 'Solicitar presupuesto gratis →'}
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={enviando}
+              className="w-full bg-gold-400 hover:bg-gold-500 disabled:opacity-60 text-black font-bold py-4 rounded-xl text-lg transition-colors shadow-lg shadow-gold-400/20 mt-2"
+            >
+              {enviando ? 'Enviando…' : 'Solicitar presupuesto gratis →'}
             </button>
 
-            <p className="text-zinc-600 text-xs text-center leading-relaxed">
-              Sin compromiso. No compartimos tus datos. Solo te llamamos para darte precio.
-            </p>
+            {/* Trust badges */}
+            <div className="flex items-center justify-center gap-6 pt-2 text-zinc-600 text-xs">
+              <span>✓ Sin compromiso</span>
+              <span>✓ No compartimos tus datos</span>
+              <span>✓ Respuesta en 2h</span>
+            </div>
+
           </form>
         )}
       </div>
