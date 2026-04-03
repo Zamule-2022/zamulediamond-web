@@ -9,8 +9,10 @@ module.exports = {
     extend: {
       colors: {
         gold: {
+          300: '#E8C547',
           400: '#D4AF37',
-          300: '#E5C83E',
+          500: '#C9A227',
+          600: '#B8962E',
         },
       },
     },
