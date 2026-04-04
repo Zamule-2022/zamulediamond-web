@@ -1,7 +1,6 @@
 export default function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
-      {/* Fondo degradado */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-900 to-black" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,55,0.08)_0%,_transparent_70%)]" />
 
@@ -19,9 +18,15 @@ export default function Hero() {
         <p className="text-zinc-300 text-lg md:text-xl max-w-2xl mx-auto mb-3">
           Reparaci&oacute;n CNC profesional en tu garaje o aparcamiento. Venimos a donde est&eacute;s.
         </p>
-        <p className="text-zinc-500 text-base md:text-lg max-w-xl mx-auto mb-10">
+        <p className="text-zinc-500 text-base md:text-lg max-w-xl mx-auto mb-8">
           Sin taller. Sin esperas. Resultado garantizado en el mismo d&iacute;a.
         </p>
+
+        {/* Urgencia */}
+        <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-2 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" />
+          <span className="text-amber-400 text-xs font-semibold tracking-wide">Plazas limitadas esta semana &middot; Reserva sin pagar nada</span>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -38,9 +43,9 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Confianza */}
+        {/* Objección eliminada */}
         <p className="text-zinc-600 text-xs mt-6 tracking-wide">
-          Sin compromiso &middot; Respuesta en 2 horas &middot; Operamos en toda Mallorca
+          Sin compromiso &middot; Sin pago por adelantado &middot; Respuesta en 2 horas
         </p>
 
         {/* Stats */}
