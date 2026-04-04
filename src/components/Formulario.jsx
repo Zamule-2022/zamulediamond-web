@@ -120,17 +120,22 @@ export default function Formulario() {
               {...register('descripcion')}
             />
 
+            {/* Pre-CTA urgencia */}
+            <p className="text-center text-sm text-zinc-400 pb-1">
+              Te decimos el precio exacto <span className="text-gold-400 font-semibold">hoy mismo</span>
+            </p>
+
             <button
               type="submit"
               disabled={enviando}
               className="w-full bg-gold-400 text-black font-bold py-4 rounded-xl text-lg hover:bg-gold-500 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-gold-400/20"
             >
-              {enviando ? 'Enviando...' : 'Ver mi precio gratis \u2192'}
+              {enviando ? 'Enviando...' : 'Quiero mi precio ahora \u2192'}
             </button>
 
             <div className="flex items-center justify-center gap-4 text-zinc-600 text-xs">
               <span>&#10003; Sin compromiso</span>
-              <span>&#10003; Sin spam</span>
+              <span>&#10003; Sin pago por adelantado</span>
               <span>&#10003; Respuesta en 2h</span>
             </div>
           </form>
